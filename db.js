@@ -15,8 +15,3 @@ const db = new Pool({
 });
 
 module.exports = db;
-
-// user: "maksat",
-// host: "dpg-cjfe12gcfp5c73abst0g-a.frankfurt-postgres.render.com",
-// database: "sneakersdb",
-// password: "sPYAexxEwESUiE5lWMzzGAa4cscRWwva",
