@@ -3,10 +3,8 @@ const cors = require("cors");
 // const pkg = require("pg");
 const multer = require("multer");
 const path = require("path");
-const db = require("./db");
 const router = require("./routes/index.js");
 
-// const { Pool } = pkg;
 const app = express();
 
 app.use(express.json());

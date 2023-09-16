@@ -2,9 +2,29 @@ const db = require("../db.js");
 
 class ProductController {
   async getAllProducts(req, res) {
-    const productQuery = "SELECT * FROM products";
+    const { brand, sort } = req.query;
 
-    const products = await db.query(productQuery);
+    let productQuery = `SELECT * FROM products`;
+
+    let queryValues = [];
+
+    if (brand !== "all") {
+      productQuery += " WHERE brand = $1";
+      queryValues.push(brand);
+    }
+
+    if (sort === "DESC") {
+      productQuery += " ORDER BY price DESC";
+    } else if (sort === "ASC") {
+      productQuery += " ORDER BY price ASC";
+    }
+
+    const query = {
+      text: productQuery,
+      values: queryValues,
+    };
+
+    const products = await db.query(query);
 
     try {
       if (!products.rows) {
